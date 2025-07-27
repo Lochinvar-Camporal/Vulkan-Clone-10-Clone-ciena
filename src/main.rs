@@ -23,6 +23,10 @@ fn main() {
         cgmath::Vector3::new(-0.5, -0.5, -0.5),
         cgmath::Vector3::new(0.5, 0.5, 0.5),
     );
+    let small_cube_collider = Aabb::new(
+        cgmath::Vector3::new(-1.25, -0.25, -0.25),
+        cgmath::Vector3::new(-0.75, 0.25, 0.25),
+    );
 
     let mut input_state = InputState::default();
     let mut last_frame = std::time::Instant::now();
@@ -97,7 +101,7 @@ fn main() {
                 let dt = now.duration_since(last_frame).as_secs_f32();
                 last_frame = now;
 
-                let colliders = [cube_collider];
+                let colliders = [cube_collider, small_cube_collider];
                 if input_state.forward { camera.process_keyboard_collision(CameraMovement::Forward, dt, &colliders); }
                 if input_state.backward { camera.process_keyboard_collision(CameraMovement::Backward, dt, &colliders); }
                 if input_state.left { camera.process_keyboard_collision(CameraMovement::Left, dt, &colliders); }
