@@ -35,48 +35,43 @@ impl Vertex {
     }
 }
 
-pub const VERTICES: [Vertex; 8] = [
-    Vertex {
-        pos: [-0.5, -0.5, 0.5],
-        color: [0.298, 0.686, 0.314],
-    },
-    Vertex {
-        pos: [0.5, -0.5, 0.5],
-        color: [0.298, 0.686, 0.314],
-    },
-    Vertex {
-        pos: [0.5, 0.5, 0.5],
-        color: [0.298, 0.686, 0.314],
-    },
-    Vertex {
-        pos: [-0.5, 0.5, 0.5],
-        color: [0.298, 0.686, 0.314],
-    },
-    Vertex {
-        pos: [-0.5, -0.5, -0.5],
-        color: [0.298, 0.686, 0.314],
-    },
-    Vertex {
-        pos: [0.5, -0.5, -0.5],
-        color: [0.298, 0.686, 0.314],
-    },
-    Vertex {
-        pos: [0.5, 0.5, -0.5],
-        color: [0.298, 0.686, 0.314],
-    },
-    Vertex {
-        pos: [-0.5, 0.5, -0.5],
-        color: [0.298, 0.686, 0.314],
-    },
+pub const VERTICES: [Vertex; 16] = [
+    // Big cube
+    Vertex { pos: [-0.5, -0.5, 0.5],  color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [0.5, -0.5, 0.5],   color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [0.5, 0.5, 0.5],    color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-0.5, 0.5, 0.5],   color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-0.5, -0.5, -0.5], color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [0.5, -0.5, -0.5],  color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [0.5, 0.5, -0.5],   color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-0.5, 0.5, -0.5],  color: [0.298, 0.686, 0.314] },
+
+    // Smaller cube translated to the left
+    Vertex { pos: [-1.25, -0.25, 0.25],  color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-0.75, -0.25, 0.25],  color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-0.75, 0.25, 0.25],   color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-1.25, 0.25, 0.25],   color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-1.25, -0.25, -0.25], color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-0.75, -0.25, -0.25], color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-0.75, 0.25, -0.25],  color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-1.25, 0.25, -0.25],  color: [0.298, 0.686, 0.314] },
 ];
 
-pub const INDICES: [u16; 36] = [
+pub const INDICES: [u16; 72] = [
     0, 1, 2, 2, 3, 0, // front
     4, 6, 5, 4, 7, 6, // back
     0, 7, 4, 0, 3, 7, // left
     1, 5, 6, 6, 2, 1, // right
     3, 2, 6, 6, 7, 3, // top
     0, 5, 1, 5, 0, 4, // bottom
+
+    // Small cube (offset 8)
+    8, 9, 10, 10, 11, 8, // front
+    12, 14, 13, 12, 15, 14, // back
+    8, 15, 12, 8, 11, 15, // left
+    9, 13, 14, 14, 10, 9, // right
+    11, 10, 14, 14, 15, 11, // top
+    8, 13, 9, 13, 8, 12, // bottom
 ];
 
 pub fn generate_wireframe_vertices(divisions: u32) -> Vec<Vertex> {
