@@ -87,6 +87,13 @@ impl VulkanApp {
             v.pos[2] *= 0.5;
         }
         wire_vertices.extend_from_slice(&small_wire);
+        let mut tiny_wire = generate_wireframe_vertices(24);
+        for v in &mut tiny_wire {
+            v.pos[0] = v.pos[0] * 0.2 - 1.6;
+            v.pos[1] *= 0.2;
+            v.pos[2] *= 0.2;
+        }
+        wire_vertices.extend_from_slice(&tiny_wire);
         let wireframe_vertex_count = wire_vertices.len() as u32;
         let (wireframe_vertex_buffer, wireframe_vertex_buffer_memory) =
             buffers::create_vertex_buffer(
