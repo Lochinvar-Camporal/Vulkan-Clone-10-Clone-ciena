@@ -35,7 +35,7 @@ impl Vertex {
     }
 }
 
-pub const VERTICES: [Vertex; 16] = [
+pub const VERTICES: [Vertex; 24] = [
     // Big cube
     Vertex { pos: [-0.5, -0.5, 0.5],  color: [0.298, 0.686, 0.314] },
     Vertex { pos: [0.5, -0.5, 0.5],   color: [0.298, 0.686, 0.314] },
@@ -55,9 +55,19 @@ pub const VERTICES: [Vertex; 16] = [
     Vertex { pos: [-0.75, -0.25, -0.25], color: [0.298, 0.686, 0.314] },
     Vertex { pos: [-0.75, 0.25, -0.25],  color: [0.298, 0.686, 0.314] },
     Vertex { pos: [-1.25, 0.25, -0.25],  color: [0.298, 0.686, 0.314] },
+
+    // Tiny cube translated further to the left
+    Vertex { pos: [-1.7, -0.1, 0.1],  color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-1.5, -0.1, 0.1],  color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-1.5, 0.1, 0.1],   color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-1.7, 0.1, 0.1],   color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-1.7, -0.1, -0.1], color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-1.5, -0.1, -0.1], color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-1.5, 0.1, -0.1],  color: [0.298, 0.686, 0.314] },
+    Vertex { pos: [-1.7, 0.1, -0.1],  color: [0.298, 0.686, 0.314] },
 ];
 
-pub const INDICES: [u16; 72] = [
+pub const INDICES: [u16; 108] = [
     0, 1, 2, 2, 3, 0, // front
     4, 6, 5, 4, 7, 6, // back
     0, 7, 4, 0, 3, 7, // left
@@ -72,6 +82,14 @@ pub const INDICES: [u16; 72] = [
     9, 13, 14, 14, 10, 9, // right
     11, 10, 14, 14, 15, 11, // top
     8, 13, 9, 13, 8, 12, // bottom
+
+    // Tiny cube (offset 16)
+    16, 17, 18, 18, 19, 16, // front
+    20, 22, 21, 20, 23, 22, // back
+    16, 23, 20, 16, 19, 23, // left
+    17, 21, 22, 22, 18, 17, // right
+    19, 18, 22, 22, 23, 19, // top
+    16, 21, 17, 21, 16, 20, // bottom
 ];
 
 pub fn generate_wireframe_vertices(divisions: u32) -> Vec<Vertex> {
